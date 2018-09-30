@@ -1,0 +1,34 @@
+%-------------------------------------------------------------------------------
+%	SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{学术论文}
+
+%-------------------------------------------------------------------------------
+%	CONTENT
+%-------------------------------------------------------------------------------
+\begin{cventries}
+
+%---------------------------------------------------------
+  \cventry
+    {Ce Gao, Rui Ren and Hongming Cai} % Award
+    {GAI: A Centralized Tree-Based Scheduler for Machine Learning Workload in Large Shared Cluster} % Event
+    {ICA3PP'18 (CCF-C)} % Location
+    {2018.11} % Date(s)
+    {
+      \begin{cvitems} % Description(s)
+        \item {
+          本文分析了机器学习模型的训练，识别了训练过程中的短板效应:与 CPU 训练相比，GPU 训练需要更高的网络带宽。这一观察启发了 GAI 的设计，GAI 是一个集中式的调度器，用于机器学习工作负载。它依赖于两种技术：1)树型结构。该结构分层存储集群信息，实现多层调度。2)扩展良好的优先级算法。我们全面考虑了模型培训工作的多个优先级，以支持资源退化和抢占。在 Kubernetes、Kubeflow 和 TensorFlow 上实现了 GAI 的原型。它是通过一个模拟器和一个真正的基于云的集群进行评估的。结果表明，在 DL 模型上，调度吞吐量提高了28\%，训练收敛速度提高了21\%。
+        }
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {Xinyuan Huang, Amit Saha, Debojyoti Dutta and Ce Gao} % Award
+    {Kubebench: A Benchmarking Platform for ML Workloads} % Event
+    {IEEE AI4I'18} % Location
+    {2018.9} % Date(s)
+    {
+    }
+
+\end{cventries}
