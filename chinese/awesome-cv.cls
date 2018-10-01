@@ -89,6 +89,9 @@
   pdfkeywords={}
 }
 
+\setmainfont[Color=primary, Path = fonts/source-han-serif/,BoldItalicFont=SourceHanSerifSC-Bold,BoldFont=SourceHanSerifSC-Bold,ItalicFont=SourceHanSerifSC-Bold]{SourceHanSerifSC-Regular}
+\setsansfont[Scale=MatchLowercase,Mapping=tex-text, Path = fonts/source-han-sans/]{SourceHanSansSC-ExtraLight}
+
 %-------------------------------------------------------------------------------
 %                Configuration for directory locations
 %-------------------------------------------------------------------------------
@@ -298,11 +301,11 @@
 
 % Defines writer's homepage (optional)
 % Usage: \homepage{<url>}
-\newcommand*{\homepage}[1]{\def\@homepage{#1}}
+\newcommand*{\homepage}[2]{\def\@homepage{#1}\def\@homepagedetail{#2}}
 
 % Defines writer's github (optional)
 % Usage: \github{<github-nick>}
-\newcommand*{\github}[1]{\def\@github{#1}}
+\newcommand*{\github}[2]{\def\@github{#1}\def\@githubdetail{#2}}
 
 % Defines writer's gitlab (optional)
 % Usage: \gitlab{<gitlab-nick>}
@@ -462,18 +465,32 @@
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}%
-        }%
+      }%
+    } \\[\acvHeaderAfterSocialSkip]%
+    \ifthenelse{\isundefined{\@quote}}%
+      {}%
+      {\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
+  \end{minipage}%
+  \begin{minipage}[c]{\headerphotowidth}%
+    \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
+  \end{minipage}
+  \begin{minipage}[c]{\headertextwidth}
+    \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
+    \headersocialstyle{%
+      \newbool{isstart}%
+      \setbool{isstart}{true}%
       \ifthenelse{\isundefined{\@homepage}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
+          \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage(\@homepagedetail)}%
+          \setbool{isstart}{false}%
         }%
       \ifthenelse{\isundefined{\@github}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}%
+          \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github(\@githubdetail)}%
         }%
       \ifthenelse{\isundefined{\@gitlab}}%
         {}%
