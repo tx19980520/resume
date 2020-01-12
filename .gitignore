@@ -92,3 +92,6 @@ sympy-plots-for-*.tex/
 *.xdy
 
 .vscode/
+
+# output
+.pdf

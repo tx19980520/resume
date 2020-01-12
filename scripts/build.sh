@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ROOT=$(dirname "${BASH_SOURCE}")/..
+ROOT= "/workspaces/resume"
 CHINESE_DIR="chinese"
 ENGLISH_DIR="english"
 OUTPUT_DIR="docs"
